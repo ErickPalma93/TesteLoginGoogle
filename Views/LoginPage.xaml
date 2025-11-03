@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:AppTeste.ViewModels"
+             x:Class="AppTeste.Views.LoginPage"
+             x:DataType="viewmodels:LoginViewModel"
+             Shell.NavBarIsVisible="False">
+
+    <!-- Gradiente moderno de fundo -->
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#4A00E0" Offset="0.0"/>
+            <GradientStop Color="#8E2DE2" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="20"
+            Padding="30"
+            VerticalOptions="Center">
+
+
+            <!-- Título elegante -->
+            <Label
+                Text="Bem-vindo!"
+                FontSize="36"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White"
+                Margin="0,20,0,0"/>
+
+            <Label
+                Text="Faça login para continuar"
+                FontSize="16"
+                HorizontalOptions="Center"
+                TextColor="White"
+                Opacity="0.8"
+                Margin="0,0,0,30"/>
+
+            <!-- Botão moderno Google -->
+            <Button 
+                Text="Entrar com Google"
+                Command="{Binding LoginWithGoogleCommand}"
+                IsEnabled="{Binding IsLoading, Converter={StaticResource InvertedBoolConverter}}"
+                BackgroundColor="White"
+                TextColor="#4A00E0"
+                FontSize="16"
+                FontAttributes="Bold"
+                HeightRequest="55"
+                CornerRadius="28"
+                Margin="0,0,0,20"
+                ImageSource="google_logo.png"/>
+
+            <!-- Indicador de carregamento com animação sutil -->
+            <ActivityIndicator
+                IsRunning="{Binding IsLoading}"
+                IsVisible="{Binding IsLoading}"
+                Color="White"
+                HeightRequest="40"/>
+
+            <!-- Mensagem de erro elegante -->
+            <Frame
+                IsVisible="{Binding ErrorMessage, Converter={StaticResource StringNotEmptyConverter}, TargetNullValue=False, Mode=OneWay}"
+                BackgroundColor="#FFEBEE"
+                BorderColor="#F44336"
+                CornerRadius="16"
+                Padding="15"
+                Margin="0,10,0,0"
+                HasShadow="True"
+                Opacity="0.95">
+                <Label
+                    Text="{Binding ErrorMessage}"
+                    TextColor="#D32F2F"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"/>
+            </Frame>
+
+            <!-- Informações de privacidade estilizadas -->
+            <Label
+                Text="Ao continuar, você concorda com nossos Termos de Serviço e Política de Privacidade"
+                FontSize="12"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="White"
+                Opacity="0.6"
+                Margin="0,30,0,0"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
