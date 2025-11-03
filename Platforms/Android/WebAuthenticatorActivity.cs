@@ -7,8 +7,8 @@ namespace AppTeste
     [Activity(NoHistory = true, LaunchMode = LaunchMode.SingleTop, Exported = true)]
     [IntentFilter(new[] { Android.Content.Intent.ActionView },
         Categories = new[] { Android.Content.Intent.CategoryDefault, Android.Content.Intent.CategoryBrowsable },
-        DataScheme = "",
-        DataPath = "")]
+        DataScheme = "com.googleusercontent.apps.556659463865-4bi59i533sfc8un7r807qgol183hedsh",
+        DataPath = "/oauth2redirect")]
     public class WebAuthenticatorActivity : Microsoft.Maui.Authentication.WebAuthenticatorCallbackActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

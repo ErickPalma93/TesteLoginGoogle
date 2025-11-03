@@ -5,10 +5,10 @@ namespace AppTeste.Services;
 
 public class GoogleAuthService : IAuthService
 {
-    private const string ClientId = "";
+    private const string ClientId = "556659463865-4bi59i533sfc8un7r807qgol183hedsh.apps.googleusercontent.com";
 
     private const string AuthorizeUrl = "https://accounts.google.com/o/oauth2/v2/auth";
-    private const string RedirectUri = "";
+    private const string RedirectUri = "com.googleusercontent.apps.556659463865-4bi59i533sfc8un7r807qgol183hedsh:/oauth2redirect"; 
     private const string Scope = "openid profile email";
     private const string UserInfoEndpoint = "https://www.googleapis.com/oauth2/v2/userinfo";
 
@@ -19,9 +19,9 @@ public class GoogleAuthService : IAuthService
         try
         {
             var authUrl = $"{AuthorizeUrl}?client_id={ClientId}" +
-                          $"&redirect_uri={RedirectUri}" +
-                          $"&response_type=code" + 
-                          $"&scope={Scope}";
+                                  $"&redirect_uri={RedirectUri}" +
+                                  $"&response_type=code" + 
+                                  $"&scope={Scope}";
 
             System.Diagnostics.Debug.WriteLine($">>> Auth URL: {authUrl}");
 
